@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Starshipit Plan Calculator</title>
-    <script async src="https://cdn.seline.so/seline.js" data-token="93606041dcddd9a"></script>
+    <script
+      async
+      src="https://cdn.seline.so/seline.js"
+      data-token="93606041dcddd9a"
+    ></script>
   </head>
   <body>
     <div class="container">
@@ -35,7 +39,7 @@
                   <!-- <div class="slider-mark" style="left: 2.38%; top: -10px">
                     250
                   </div> -->
-                  <div class="slider-mark above" style="left: 2.38%;">250</div>
+                  <div class="slider-mark above" style="left: 2.38%">250</div>
                   <div class="slider-mark" style="left: 4.76%">500</div>
                   <div class="slider-mark" style="left: 9.52%">1,000</div>
                   <div class="slider-mark" style="left: 47.62%">5,000</div>
@@ -49,6 +53,7 @@
                   value="750"
                   min="0"
                   max="20000"
+                  data-sln-event="pricing slider: moved"
                 />
                 <span>labels/month</span>
               </div>
@@ -71,30 +76,29 @@
               <h2>Required Features</h2>
 
               <!-- <div class="feature-group"> -->
-                <!-- <h3>Automation</h3> -->
-                <div class="feature-item dropdown">
-                  <label for="automation-rules">Automation Rules Needed:</label>
-                  <select id="automation-rules">
-                    <option value="0">No automation rules</option>
-                    <option value="1">1-3 rules</option>
-                    <option value="4">4-5 rules</option>
-                    <option value="6">More than 5 rules</option>
-                  </select>
-                </div>
+              <!-- <h3>Automation</h3> -->
+              <div class="feature-item dropdown">
+                <label for="automation-rules">Automation Rules Needed:</label>
+                <select id="automation-rules">
+                  <option value="0">No automation rules</option>
+                  <option value="1">1-3 rules</option>
+                  <option value="4">4-5 rules</option>
+                  <option value="6">More than 5 rules</option>
+                </select>
+              </div>
               <!-- </div> -->
-              
 
               <!-- <div class="feature-group"> -->
-                <!-- <h3>Courier Integration</h3> -->
-                <div class="feature-item dropdown" style="margin-bottom: 30px;">
-                  <label for="courier-count">Number of Couriers:</label>
-                  <select id="courier-count">
-                    <option value="0">No couriers</option>
-                    <option value="1">1-2 couriers</option>
-                    <option value="3">3-4 couriers</option>
-                    <option value="5">More than 4 couriers</option>
-                  </select>
-                </div>
+              <!-- <h3>Courier Integration</h3> -->
+              <div class="feature-item dropdown" style="margin-bottom: 30px">
+                <label for="courier-count">Number of Couriers:</label>
+                <select id="courier-count">
+                  <option value="0">No couriers</option>
+                  <option value="1">1-2 couriers</option>
+                  <option value="3">3-4 couriers</option>
+                  <option value="5">More than 4 couriers</option>
+                </select>
+              </div>
               <!-- </div> -->
 
               <div class="feature-group">
@@ -125,7 +129,6 @@
                     >
                   </div>
                 </div>
-
               </div>
 
               <div class="feature-group">
@@ -135,17 +138,17 @@
                   <div class="checkbox-container">
                     <input type="checkbox" id="live-rates" />
                     <label for="live-rates"
-                      >Live Shipping Rates at Checkout </label
-                    >
+                      >Live Shipping Rates at Checkout
+                    </label>
                     <span class="feature-tag">Add-on</span>
                   </div>
                 </div>
                 <div class="feature-item">
-                    <div class="checkbox-container">
-                      <input type="checkbox" id="shipping-margins" />
-                      <label for="shipping-margins">Shipping Cost Margins</label>
-                    </div>
+                  <div class="checkbox-container">
+                    <input type="checkbox" id="shipping-margins" />
+                    <label for="shipping-margins">Shipping Cost Margins</label>
                   </div>
+                </div>
                 <div class="feature-item">
                   <div class="checkbox-container">
                     <input type="checkbox" id="branded-returns" />
@@ -153,7 +156,6 @@
                       >Branded Customer Returns Portal</label
                     >
                     <span class="feature-tag">Add-on</span>
-
                   </div>
                 </div>
 
@@ -170,9 +172,12 @@
                   <label for="user-accounts">User Accounts Needed:</label>
                   <select id="user-accounts">
                     <option value="1">1-5 user accounts (Basic plan)</option>
-                    <!-- <option value="3">3-5 users</option> -->
-                    <option value="6">6-10 user accounts (Advanced plan)</option>
-                    <option value="11">More than 10 user accounts (Enterprise plan)</option>
+                    <option value="6">
+                      6-10 user accounts (Advanced plan)
+                    </option>
+                    <option value="11">
+                      More than 10 user accounts (Enterprise plan)
+                    </option>
                   </select>
                 </div>
                 <div class="feature-item dropdown">
@@ -185,6 +190,7 @@
                     min="0"
                     value="0"
                     class="number-input"
+                    data-sln-event="child accounts: updated"
                   />
                 </div>
               </div>
