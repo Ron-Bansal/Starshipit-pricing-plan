@@ -3,24 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Starshipit Plan Calculator</title>
+    <title>Starshipit Pricing Calculator</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="container">
       <div class="calculator-wrapper">
         <header>
-          <h1>Starshipit Plan Calculator</h1>
-          <p>Find the perfect plan for your shipping needs</p>
+          <h1>Starshipit Pricing Calculator</h1>
+          <p>
+            Find the perfect Starshipit plan for your shipping needs and budget
+          </p>
         </header>
-        <link rel="stylesheet" href="styles.css" />
 
         <div class="calculator-sections">
           <div class="input-section">
-            <h2>Monthly Label Volume</h2>
+            <div class="section-title">
+              <svg
+                class="section-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M18 20V10"></path>
+                <path d="M12 20V4"></path>
+                <path d="M6 20v-6"></path>
+              </svg>
+              <h2>Monthly Label Volume</h2>
+            </div>
 
             <div class="volume-control">
               <div class="slider-container">
-                <!-- <label for="volume-slider">Monthly Label Volume</label> -->
                 <input
                   type="range"
                   id="volume-slider"
@@ -31,14 +52,11 @@
                 />
 
                 <div class="slider-marks">
-                  <!-- <div class="slider-mark" style="left: 2.38%; top: -10px">
-                    250
-                  </div> -->
-                  <div class="slider-mark above" style="left: 2.38%;">250</div>
+                  <div class="slider-mark" style="left: 2.38%"></div>
                   <div class="slider-mark" style="left: 4.76%">500</div>
-                  <div class="slider-mark" style="left: 9.52%">1,000</div>
-                  <div class="slider-mark" style="left: 47.62%">5,000</div>
-                  <div class="slider-mark" style="left: 95.24%">10,000</div>
+                  <div class="slider-mark" style="left: 9.52%">1000</div>
+                  <div class="slider-mark" style="left: 47.62%">5000</div>
+                  <div class="slider-mark" style="left: 95.24%">10000+</div>
                 </div>
               </div>
               <div class="volume-inputs">
@@ -49,7 +67,7 @@
                   min="0"
                   max="20000"
                 />
-                <span>labels/month</span>
+                <span>labels per month</span>
               </div>
             </div>
 
@@ -62,177 +80,703 @@
                 <span class="toggle-slider"></span>
               </label>
               <span class="toggle-label" id="annual-label"
-                >Annual (Save 10%)</span
+                >Annual <span class="savings-badge">Save 10%</span></span
               >
             </div>
 
-            <div class="features-section">
-              <h2>Required Features</h2>
+            <div class="section-title">
+              <svg
+                class="section-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+              <h2>Core Features</h2>
+            </div>
 
-              <!-- <div class="feature-group"> -->
-                <!-- <h3>Automation</h3> -->
-                <div class="feature-item dropdown">
-                  <label for="automation-rules">Automation Rules Needed:</label>
-                  <select id="automation-rules">
-                    <option value="0">No automation rules</option>
-                    <option value="1">1-3 rules</option>
-                    <option value="4">4-5 rules</option>
-                    <option value="6">More than 5 rules</option>
-                  </select>
-                </div>
-              <!-- </div> -->
-              
-
-              <!-- <div class="feature-group"> -->
-                <!-- <h3>Courier Integration</h3> -->
-                <div class="feature-item dropdown" style="margin-bottom: 30px;">
-                  <label for="courier-count">Number of Couriers:</label>
-                  <select id="courier-count">
-                    <option value="0">No couriers</option>
-                    <option value="1">1-2 couriers</option>
-                    <option value="3">3-4 couriers</option>
-                    <option value="5">More than 4 couriers</option>
-                  </select>
-                </div>
-              <!-- </div> -->
-
-              <div class="feature-group">
-                <h2>Advanced Features</h2>
-                <p>
-                  <span class="plan-tag professional-plan-tag"
-                    >Included in the Advanced and Enterprise plans</span
+            <div class="feature-group">
+              <div class="feature-item dropdown">
+                <label for="automation-rules">Automation Rules</label>
+                <div class="tooltip">
+                  <span class="tooltip-icon">?</span>
+                  <span class="tooltip-text"
+                    >Set up intelligent workflows to automatically assign
+                    carriers and services based on your order criteria.</span
                   >
-                </p>
-                <div class="feature-item">
-                  <div class="checkbox-container">
-                    <input type="checkbox" id="product-catalogue" />
-                    <label for="product-catalogue">Product Catalogue</label>
-                    <span class="plan-tag"></span>
-                  </div>
                 </div>
-                <div class="feature-item">
-                  <div class="checkbox-container">
-                    <input type="checkbox" id="packing-validation" />
-                    <label for="packing-validation">Packing Validation</label>
-                  </div>
-                </div>
-                <div class="feature-item">
-                  <div class="checkbox-container">
-                    <input type="checkbox" id="recommended-packaging" />
-                    <label for="recommended-packaging"
-                      >Recommended Packaging</label
+                <select id="automation-rules">
+                  <option value="0">No automation rules</option>
+                  <option value="1">1-3 rules</option>
+                  <option value="4">4-5 rules</option>
+                  <option value="6">More than 5 rules</option>
+                </select>
+                <div class="feature-description">
+                  Create smart workflows to route orders to the right carrier
+                  automatically.
+                  <a
+                    href="https://help.starshipit.com/en/articles/automation-rules"
+                    class="kb-link"
+                    target="_blank"
+                    >Learn more
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
                     >
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="feature-group">
-                <h2>Additional Requirements</h2>
-
-                <div class="feature-item">
-                  <div class="checkbox-container">
-                    <input type="checkbox" id="live-rates" />
-                    <label for="live-rates"
-                      >Live Shipping Rates at Checkout </label
-                    >
-                    <span class="feature-tag">Add-on</span>
-                  </div>
-                </div>
-                <div class="feature-item">
-                    <div class="checkbox-container">
-                      <input type="checkbox" id="shipping-margins" />
-                      <label for="shipping-margins">Shipping Cost Margins</label>
-                    </div>
-                  </div>
-                <div class="feature-item">
-                  <div class="checkbox-container">
-                    <input type="checkbox" id="branded-returns" />
-                    <label for="branded-returns"
-                      >Branded Customer Returns Portal</label
-                    >
-                    <span class="feature-tag">Add-on</span>
-
-                  </div>
-                </div>
-
-                <div class="feature-item dropdown">
-                  <label for="tracking-level">Tracking Notifications:</label>
-                  <select id="tracking-level">
-                    <option value="basic">Basic (Starshipit branding)</option>
-                    <option value="advanced">
-                      Advanced (Customised branding)
-                    </option>
-                  </select>
-                </div>
-                <div class="feature-item dropdown">
-                  <label for="user-accounts">User Accounts Needed:</label>
-                  <select id="user-accounts">
-                    <option value="1">1-5 user accounts (Basic plan)</option>
-                    <!-- <option value="3">3-5 users</option> -->
-                    <option value="6">6-10 user accounts (Advanced plan)</option>
-                    <option value="11">More than 10 user accounts (Enterprise plan)</option>
-                  </select>
-                </div>
-                <div class="feature-item dropdown">
-                  <label for="multi-accounts"
-                    >Multi-location/Multi-brand Accounts:</label
-                  >
-                  <input
-                    type="number"
-                    id="multi-accounts"
-                    min="0"
-                    value="0"
-                    class="number-input"
-                  />
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      ></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
                 </div>
               </div>
 
-              <div class="feature-group">
-                <h2>Enterprise Features</h2>
-                <div class="feature-item">
-                  <div class="checkbox-container">
-                    <input type="checkbox" id="account-management" />
-                    <label for="account-management">Account Management</label>
-                  </div>
-                </div>
-                <div class="feature-item">
-                  <div class="checkbox-container">
-                    <input type="checkbox" id="inventory-integration" />
-                    <label for="inventory-integration"
-                      >Inventory Management Integration</label
+              <div class="feature-item dropdown">
+                <label for="courier-count">Courier Integrations</label>
+                <select id="courier-count">
+                  <!-- <option value="0">No couriers</option> -->
+                  <option value="1">1-2 couriers</option>
+                  <option value="3">3-4 couriers</option>
+                  <option value="5">More than 4 couriers</option>
+                </select>
+                <div class="feature-description">
+                  Connect with multiple shipping carriers through a single
+                  dashboard.
+                  <a
+                    href="https://help.starshipit.com/en/articles/courier-integrations"
+                    class="kb-link"
+                    target="_blank"
+                    >Learn more
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
                     >
-                  </div>
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      ></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
                 </div>
-                <div class="feature-item">
-                  <div class="checkbox-container">
-                    <input type="checkbox" id="wms-integration" />
-                    <label for="wms-integration">WMS Integration</label>
-                  </div>
+              </div>
+
+              <div class="feature-item dropdown">
+                <label for="tracking-level">Tracking Notifications</label>
+                <select id="tracking-level">
+                  <option value="basic">Basic (Starshipit branding)</option>
+                  <option value="advanced">
+                    Advanced (Customised branding)
+                  </option>
+                </select>
+                <div class="feature-description">
+                  Keep customers informed with automatic updates about their
+                  shipment status.
+                  <a
+                    href="https://help.starshipit.com/en/articles/tracking-notifications"
+                    class="kb-link"
+                    target="_blank"
+                    >Learn more
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      ></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
                 </div>
-                <div class="feature-item">
-                  <div class="checkbox-container">
-                    <input type="checkbox" id="erp-integration" />
-                    <label for="erp-integration">ERP Integration</label>
-                  </div>
+              </div>
+
+              <div class="feature-item dropdown">
+                <label for="user-accounts">User Accounts</label>
+                <select id="user-accounts">
+                  <option value="1">1-5 users (Basic plan)</option>
+                  <option value="6">6-10 users (Advanced plan)</option>
+                  <option value="11">
+                    More than 10 users (Enterprise plan)
+                  </option>
+                </select>
+                <div class="feature-description">
+                  Control access levels for your team members who use the
+                  platform.
                 </div>
-                <div class="feature-item">
-                  <div class="checkbox-container">
-                    <input type="checkbox" id="sso" />
-                    <label for="sso">Single-Sign-On (SSO)</label>
-                  </div>
+              </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <div class="section-title">
+              <svg
+                class="section-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+              <h2>Advanced Features</h2>
+            </div>
+
+            <div class="feature-group">
+              <span class="plan-tag professional-plan-tag">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  width="14"
+                  height="14"
+                  style="margin-right: 4px"
+                >
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                Included in Professional and Enterprise plans
+              </span>
+
+              <div class="feature-item">
+                <div class="checkbox-container">
+                  <input type="checkbox" id="product-catalogue" />
+                  <span class="checkmark"></span>
+                  <label for="product-catalogue">Product Catalogue</label>
+                </div>
+                <div class="feature-description">
+                  Store and manage all your product information in one
+                  centralized location.
+                  <a
+                    href="https://help.starshipit.com/en/articles/product-catalogue"
+                    class="kb-link"
+                    target="_blank"
+                    >Learn more
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      ></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="checkbox-container">
+                  <input type="checkbox" id="packing-validation" />
+                  <span class="checkmark"></span>
+                  <label for="packing-validation">Packing Validation</label>
+                </div>
+                <div class="feature-description">
+                  Verify package contents before shipping to reduce errors and
+                  improve accuracy.
+                  <a
+                    href="https://help.starshipit.com/en/articles/packing-validation"
+                    class="kb-link"
+                    target="_blank"
+                    >Learn more
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      ></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="checkbox-container">
+                  <input type="checkbox" id="recommended-packaging" />
+                  <span class="checkmark"></span>
+                  <label for="recommended-packaging"
+                    >Recommended Packaging</label
+                  >
+                </div>
+                <div class="feature-description">
+                  Get smart suggestions for optimal packaging based on order
+                  contents.
+                  <a
+                    href="https://help.starshipit.com/en/articles/recommended-packaging"
+                    class="kb-link"
+                    target="_blank"
+                    >Learn more
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      ></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="checkbox-container">
+                  <input type="checkbox" id="shipping-margins" />
+                  <span class="checkmark"></span>
+                  <label for="shipping-margins">Shipping Cost Margins</label>
+                </div>
+                <div class="feature-description">
+                  Add percentage or fixed markup to shipping costs to recover
+                  expenses.
+                  <a
+                    href="https://help.starshipit.com/en/articles/shipping-margins"
+                    class="kb-link"
+                    target="_blank"
+                    >Learn more
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      ></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <div class="section-title">
+              <svg
+                class="section-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M16 8l-8 8"></path>
+                <path d="M8 8l8 8"></path>
+              </svg>
+              <h2>Add-on Features</h2>
+            </div>
+
+            <div class="feature-group">
+              <div class="feature-item">
+                <div class="checkbox-container">
+                  <input type="checkbox" id="live-rates" />
+                  <span class="checkmark"></span>
+                  <label for="live-rates"
+                    >Live Shipping Rates at Checkout</label
+                  >
+                  <span class="feature-tag addon-tag">Add-on</span>
+                </div>
+                <div class="feature-description">
+                  Show real-time shipping costs to customers during checkout.
+                  <a
+                    href="https://help.starshipit.com/en/articles/live-shipping-rates"
+                    class="kb-link"
+                    target="_blank"
+                    >Learn more
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      ></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="checkbox-container">
+                  <input type="checkbox" id="branded-returns" />
+                  <span class="checkmark"></span>
+                  <label for="branded-returns"
+                    >Branded Customer Returns Portal</label
+                  >
+                  <span class="feature-tag addon-tag">Add-on</span>
+                </div>
+                <div class="feature-description">
+                  Provide a seamless customer returns experience with your own
+                  branding.
+                  <a
+                    href="https://help.starshipit.com/en/articles/branded-returns"
+                    class="kb-link"
+                    target="_blank"
+                    >Learn more
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      ></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="feature-item dropdown">
+                <label for="multi-accounts"
+                  >Multi-location/Multi-brand Accounts</label
+                >
+                <input
+                  type="number"
+                  id="multi-accounts"
+                  min="0"
+                  value="0"
+                  class="number-input"
+                />
+                <div class="feature-description">
+                  Manage multiple store locations or brands from a single
+                  dashboard.
+                  <a
+                    href="https://help.starshipit.com/en/articles/multi-accounts"
+                    class="kb-link"
+                    target="_blank"
+                    >Learn more
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      ></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <div class="section-title">
+              <svg
+                class="section-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              </svg>
+              <h2>Enterprise Features</h2>
+            </div>
+
+            <div class="feature-group">
+              <span
+                class="plan-tag"
+                style="
+                  background-color: rgba(16, 185, 129, 0.15);
+                  color: #10b981;
+                "
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  width="14"
+                  height="14"
+                  style="margin-right: 4px"
+                >
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                Included in Enterprise plans
+              </span>
+
+              <div class="feature-item">
+                <div class="checkbox-container">
+                  <input type="checkbox" id="account-management" />
+                  <span class="checkmark"></span>
+                  <label for="account-management">Account Management</label>
+                </div>
+                <div class="feature-description">
+                  Get a dedicated account manager for personalized service and
+                  support.
+                  <a
+                    href="https://help.starshipit.com/en/articles/account-management"
+                    class="kb-link"
+                    target="_blank"
+                    >Learn more
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      ></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="checkbox-container">
+                  <input type="checkbox" id="inventory-integration" />
+                  <span class="checkmark"></span>
+                  <label for="inventory-integration"
+                    >Inventory Management Integration</label
+                  >
+                </div>
+                <div class="feature-description">
+                  Sync inventory levels across platforms to prevent overselling.
+                  <a
+                    href="https://help.starshipit.com/en/articles/inventory-integration"
+                    class="kb-link"
+                    target="_blank"
+                    >Learn more
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      ></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="checkbox-container">
+                  <input type="checkbox" id="wms-integration" />
+                  <span class="checkmark"></span>
+                  <label for="wms-integration">WMS Integration</label>
+                </div>
+                <div class="feature-description">
+                  Connect your warehouse management system for streamlined
+                  fulfillment.
+                  <a
+                    href="https://help.starshipit.com/en/articles/wms-integration"
+                    class="kb-link"
+                    target="_blank"
+                    >Learn more
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      ></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="checkbox-container">
+                  <input type="checkbox" id="erp-integration" />
+                  <span class="checkmark"></span>
+                  <label for="erp-integration">ERP Integration</label>
+                </div>
+                <div class="feature-description">
+                  Seamlessly connect Starshipit with your ERP system for
+                  centralized operations.
+                  <a
+                    href="https://help.starshipit.com/en/articles/erp-integration"
+                    class="kb-link"
+                    target="_blank"
+                    >Learn more
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      ></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="checkbox-container">
+                  <input type="checkbox" id="sso" />
+                  <span class="checkmark"></span>
+                  <label for="sso">Single-Sign-On (SSO)</label>
+                </div>
+                <div class="feature-description">
+                  Enhance security with enterprise-grade authentication for your
+                  team.
+                  <a
+                    href="https://help.starshipit.com/en/articles/sso-integration"
+                    class="kb-link"
+                    target="_blank"
+                    >Learn more
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      ></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="results-section">
-            <h2>Recommended Plan</h2>
+            <div class="section-title">
+              <svg
+                class="section-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                <path d="M2 17l10 5 10-5"></path>
+                <path d="M2 12l10 5 10-5"></path>
+              </svg>
+              <h2>Your Recommended Plan</h2>
+            </div>
 
-            <div class="result-card">
-              <div class="plan-name" id="plan-name">Professional</div>
+            <div class="result-card fade-in">
+              <div class="plan-name" id="plan-name">
+                Professional
+                <!-- <span class="plan-badge">Most popular</span> -->
+              </div>
               <div class="plan-price">
-                $<span id="plan-price">200</span> <span>/month</span>
+                $<span id="plan-price">200</span><span>/month</span>
               </div>
 
               <div class="plan-details">
@@ -263,12 +807,10 @@
               </div>
             </div>
 
-            <!-- <div id="feature-recommendations" class="feature-recommendation">
-                        Based on your selected features, we recommend the Professional plan.
-                    </div> -->
-
-            <div id="add-ons" class="result-card">
-              <h3>Add-ons & Additional Costs</h3>
+            <div id="add-ons" class="result-card fade-in">
+              <div class="add-ons-title">
+                <h3>Add-ons & Additional Costs</h3>
+              </div>
               <div class="plan-details">
                 <div class="plan-detail-item" id="live-rates-addon">
                   <div>Live Shipping Rates</div>
@@ -289,18 +831,43 @@
               </div>
             </div>
 
-            <div class="result-card total-cost">
+            <div class="result-card total-cost fade-in">
               <h3>Total Monthly Cost</h3>
               <div class="plan-price">
-                $
-                <p id="total-price">200</p>
-                <span id="price-period">/month</span>
+                $<span id="total-price">200</span
+                ><span id="price-period">/month</span>
               </div>
+              <p id="disclaimer">Disclaimer: The information on this page does not serve as an official quote. For the most accurate and up-to-date pricing information, please refer to the <a href="https://www.starshipit.com/pricing" target="_blank"> Starshipit</a> website.</p>
+
             </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- <footer class="calculator-footer">
+        <div class="footer-content">
+          <div class="footer-disclaimer">
+            <p>This calculator provides an estimate only. For the most accurate and up-to-date pricing information, please refer to the <a href="https://www.starshipit.com/pricing" target="_blank">official Starshipit website</a>.</p>
+          </div>
+           <div class="footer-links">
+            <a href="https://www.starshipit.com/terms" target="_blank">Terms of Service</a>
+            <a href="https://www.starshipit.com/privacy" target="_blank">Privacy Policy</a>
+            <a href="https://www.starshipit.com/contact" target="_blank">Contact Us</a>
+          </div> 
+          <div class="section-divider"></div>
+          <div class="footer-copyright">
+            <p>&copy; 2025 Starshipit. All rights reserved.</p>
+          </div>
+        </div>
+      </footer> -->
+
+    <!-- <button id="back-to-top">
+        <p>hello?</p>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 15l-6-6-6 6"/>
+        </svg>
+      </button> -->
+    <script src="feature-descriptions.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
