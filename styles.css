@@ -183,6 +183,7 @@ header::after {
   color: var(--neutral-800);
   margin: 0;
   letter-spacing: -0.01em;
+  align-items: start;
 }
 
 .section-icon {
@@ -196,7 +197,8 @@ header::after {
 .section-divider {
   height: 1px;
   background: linear-gradient(to right, var(--neutral-200), transparent);
-  margin: var(--spacing-8) 0;
+  /* margin: var(--spacing-8) 0; */
+  margin: 1.2rem;
 }
 
 /* Volume slider section */
@@ -401,7 +403,7 @@ input[type="range"]::-webkit-slider-thumb:active {
   position: relative;
 }
 
-.feature-description::before {
+/* .feature-description::before {
   content: "";
   position: absolute;
   top: 0.5rem;
@@ -410,7 +412,7 @@ input[type="range"]::-webkit-slider-thumb:active {
   height: calc(100% - 1rem);
   background-color: var(--neutral-200);
   border-radius: var(--radius-md);
-}
+} */
 
 /* Feature kb link */
 .kb-link {
@@ -560,6 +562,7 @@ select:focus {
   border-radius: var(--radius-2xl);
   width: fit-content;
   border: 1px solid var(--neutral-200);
+  margin-left: auto;
 }
 
 .toggle-switch {
@@ -617,6 +620,8 @@ input:checked + .toggle-slider:before {
   transition: all 0.2s ease;
   padding: var(--spacing-2) var(--spacing-3);
   border-radius: var(--radius-lg);
+  user-select: none; /* Prevent text selection on double click */
+
 }
 
 .toggle-label.active {
@@ -624,6 +629,12 @@ input:checked + .toggle-slider:before {
   font-weight: 600;
   background-color: white;
   box-shadow: var(--shadow-sm);
+  transform: scale(0.97);
+}
+
+
+.toggle-label:hover {
+  opacity: 0.9;
 }
 
 /* Tooltip styling */
@@ -974,4 +985,383 @@ input:checked + .toggle-slider:before {
   text-decoration: none;
   color: var(--primary);
   opacity: 85;
+}
+
+/* Collapsible section styles */
+.section-title.collapsible {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--neutral-50);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-4);
+  border-left: 3px solid var(--primary-light);
+}
+
+.section-title.collapsible:hover {
+  background-color: var(--neutral-100);
+}
+
+.toggle-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.section-title.collapsed .toggle-icon {
+  transform: rotate(-90deg);
+}
+
+.feature-group {
+  transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease, padding 0.3s ease, border 0.3s ease;
+  overflow: hidden;
+  max-height: none;
+}
+
+.feature-group.collapsed {
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  overflow: hidden;
+}
+
+/* Copy link button styles */
+.copy-link-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--primary);
+  padding: 2px;
+  margin-left: 4px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.copy-link-btn:hover {
+  background-color: var(--primary-light);
+  transform: scale(1.1);
+}
+
+.copy-tooltip {
+  position: absolute;
+  background-color: var(--neutral-800);
+  color: white;
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-5px);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.copy-tooltip-fade {
+  opacity: 0;
+}
+
+.copy-tooltip:after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 4px;
+  border-style: solid;
+  border-color: var(--neutral-800) transparent transparent transparent;
+}
+
+.kb-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: var(--spacing-2);
+  margin-top: 3px;
+}
+
+/* Included features styles */
+.included-features-container {
+  background-color: white;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-6);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--neutral-200);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.included-features-container:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.included-features-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-4) var(--spacing-6);
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.included-features-header:hover {
+  background-color: var(--neutral-50);
+}
+
+.included-features-header h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--neutral-700);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.included-features-header h3 svg {
+  color: var(--success);
+}
+
+.included-features-content {
+  padding: var(--spacing-6);
+  transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+  overflow: hidden;
+  max-height: none;
+  opacity: 1;
+}
+
+.included-features-content.collapsed {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.included-features-header.collapsed + .included-features-content {
+  border-top: none;
+}
+
+.included-features-group {
+  margin-bottom: var(--spacing-6);
+}
+
+.included-features-group:last-child {
+  margin-bottom: 0;
+}
+
+.included-features-group h4 {
+  font-size: 0.938rem;
+  font-weight: 600;
+  color: var(--neutral-700);
+  margin-bottom: var(--spacing-3);
+  padding-bottom: var(--spacing-2);
+  border-bottom: 1px solid var(--neutral-200);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.included-features-group h4 svg {
+  color: var(--primary);
+}
+
+.included-features-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.included-features-group li {
+  font-size: 0.875rem;
+  padding: var(--spacing-2) 0;
+  color: var(--neutral-700);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-left: 1.5em;
+}
+
+.included-features-group li::before {
+  content: "•";
+  color: var(--primary);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+}
+
+.shipping-features-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-6);
+}
+
+.shipping-features-columns ul {
+  flex: 1;
+  min-width: 200px;
+}
+
+.integration-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-3);
+  margin-top: var(--spacing-4);
+}
+
+.integration-logo {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--neutral-200);
+  padding: var(--spacing-2);
+  transition: all 0.2s ease;
+}
+
+.integration-logo:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-light);
+}
+
+.integration-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.more-integrations {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+/* Enterprise integration logos */
+.enterprise-integration-logos {
+  margin-top: var(--spacing-6);
+  padding-top: var(--spacing-4);
+  border-top: 1px dashed var(--neutral-200);
+}
+
+.enterprise-integration-logos h4 {
+  font-size: 0.938rem;
+  font-weight: 600;
+  color: var(--neutral-700);
+  margin-bottom: var(--spacing-4);
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .shipping-features-columns {
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+  
+  .included-features-header h3 {
+    font-size: 0.938rem;
+  }
+  
+  .included-features-content {
+    padding: var(--spacing-4);
+  }
+}
+
+/* Fix checkbox clickability */
+.checkbox-container {
+  position: relative;
+}
+
+.checkmark {
+  cursor: pointer;
+  z-index: 5;
+}
+
+/* Highlight effect for checkboxes */
+.checkbox-container:hover .checkmark {
+  box-shadow: 0 0 0 3px rgba(75, 122, 254, 0.1);
+}
+
+.section-title.collapsible {
+  justify-content: flex-start;  /* Left align the content instead of space-between */
+}
+
+.section-title.collapsible .toggle-icon {
+  margin-left: auto; /* Push the toggle icon to the right */
+}
+
+/* Make sure the h2 stays aligned with the icon */
+.section-title h2 {
+  flex-grow: 0;
+  margin-right: auto;
+}
+
+/* Fix for included features header alignment */
+.included-features-header {
+  justify-content: flex-start;
+}
+
+.included-features-header .toggle-icon {
+  margin-left: auto;
+}
+
+/* Add some space between icon and text in included features header */
+.included-features-header h3 svg {
+  margin-right: 8px;
+}
+
+.toggle-icon svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.toggle-icon {
+  min-width: 20px;
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.included-features-header .toggle-icon {
+  margin-left: auto;
+  margin-right: 4px;
+}
+
+/* Make the toggle animation more visible */
+.included-features-header.collapsed .toggle-icon {
+  transform: rotate(-90deg);
+}
+
+i {
+  font-size: 1.5rem;
+  margin-right: 12px;
+  color: var(--primary);
+}
+
+.small-icon {
+  font-size: 1.2rem;
+  margin-right: 2px;
 }

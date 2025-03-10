@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       name: "Enterprise",
       newLabelVolume: 10000,
-      newMonthlyPrice: 500,
+      newMonthlyPrice: 550,
       automationRules: Infinity,
       courierIntegrations: Infinity,
       trackingNotifications: "Advanced",
@@ -862,5 +862,238 @@ document.addEventListener("DOMContentLoaded", function () {
     if (window.scrollY > 300) {
       backToTopButton.classList.add("visible");
     }
+  }
+});
+
+// Add collapsible sections functionality
+function setupCollapsibleSections() {
+  const sectionTitles = document.querySelectorAll('.section-title');
+  
+  sectionTitles.forEach(title => {
+    // Only apply to section titles that have a feature group following them
+    const featureGroup = title.nextElementSibling;
+    if (featureGroup && featureGroup.classList.contains('feature-group')) {
+      // Make the title clickable
+      title.classList.add('collapsible');
+      
+      // Add the toggle icon
+      const toggleIcon = document.createElement('div');
+      toggleIcon.className = 'toggle-icon';
+      toggleIcon.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      `;
+      title.appendChild(toggleIcon);
+      
+      // Set up click handler
+      title.addEventListener('click', () => {
+        featureGroup.classList.toggle('collapsed');
+        title.classList.toggle('collapsed');
+        
+        // Animate the height
+        if (featureGroup.classList.contains('collapsed')) {
+          featureGroup.style.maxHeight = '0';
+          featureGroup.style.opacity = '0';
+          featureGroup.style.margin = '0';
+          featureGroup.style.padding = '0';
+          featureGroup.style.border = 'none';
+        } else {
+          featureGroup.style.maxHeight = featureGroup.scrollHeight + 'px';
+          featureGroup.style.opacity = '1';
+          featureGroup.style.margin = '';
+          featureGroup.style.padding = '';
+          featureGroup.style.border = '';
+          
+          // Update max height after animation completes to allow for content changes
+          setTimeout(() => {
+            if (!featureGroup.classList.contains('collapsed')) {
+              featureGroup.style.maxHeight = 'none';
+            }
+          }, 300);
+        }
+      });
+    }
+  });
+}
+
+// Add copy link functionality to "Learn more" links
+function setupCopyLinks() {
+  const learnMoreLinks = document.querySelectorAll('.kb-link');
+  
+  learnMoreLinks.forEach(link => {
+    // Create copy button
+    const copyBtn = document.createElement('button');
+    copyBtn.className = 'copy-link-btn';
+    copyBtn.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+    `;
+    copyBtn.setAttribute('aria-label', 'Copy link');
+    copyBtn.setAttribute('title', 'Copy link to clipboard');
+    
+    // We want to preserve the existing learn more text and link, but replace arrow icon with copy button
+    const existingSvg = link.querySelector('svg');
+    if (existingSvg) {
+      existingSvg.replaceWith(copyBtn);
+    } else {
+      link.appendChild(copyBtn);
+    }
+    
+    // Set up click handler for copy button
+    copyBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const url = link.getAttribute('href');
+      navigator.clipboard.writeText(url).then(() => {
+        // Show success tooltip
+        const tooltip = document.createElement('div');
+        tooltip.className = 'copy-tooltip';
+        tooltip.textContent = 'Link copied!';
+        link.appendChild(tooltip);
+        
+        // Remove tooltip after a delay
+        setTimeout(() => {
+          tooltip.classList.add('copy-tooltip-fade');
+          setTimeout(() => {
+            link.removeChild(tooltip);
+          }, 300);
+        }, 1500);
+      });
+    });
+  });
+}
+
+// Make checkboxes directly clickable
+function makeCheckboxesClickable() {
+  const checkmarks = document.querySelectorAll('.checkmark');
+  
+  checkmarks.forEach(checkmark => {
+    const checkbox = checkmark.previousElementSibling;
+    
+    checkmark.addEventListener('click', () => {
+      checkbox.checked = !checkbox.checked;
+      // Trigger change event to update the calculator
+      const changeEvent = new Event('change');
+      checkbox.dispatchEvent(changeEvent);
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Call existing initialization functions
+  if (typeof initTooltips === 'function') initTooltips();
+  if (typeof initCardAnimations === 'function') initCardAnimations();
+  if (typeof updateSliderFill === 'function') updateSliderFill();
+  if (typeof updateVolumeMarkers === 'function') updateVolumeMarkers();
+  if (typeof updateCalculator === 'function') updateCalculator();
+  
+  // Call our new enhancement functions
+  setupCollapsibleSections();
+  setupCopyLinks();
+  makeCheckboxesClickable();
+
+  // Auto-collapse some sections by default for cleaner initial view
+  setTimeout(() => {
+    const enterpriseSection = Array.from(document.querySelectorAll('.section-title h2'))
+      .find(h2 => h2.textContent.trim() === 'Enterprise Features');
+    
+    if (enterpriseSection) {
+      enterpriseSection.closest('.section-title').click();
+    }
+    
+    const addOnsSection = Array.from(document.querySelectorAll('.section-title h2'))
+      .find(h2 => h2.textContent.trim() === 'Add-on Features');
+    
+    if (addOnsSection) {
+      addOnsSection.closest('.section-title').click();
+    }
+    
+    // Initialize the included features section in collapsed state
+    const includedFeaturesHeader = document.querySelector('.included-features-header');
+    if (includedFeaturesHeader && !includedFeaturesHeader.classList.contains('collapsed')) {
+      includedFeaturesHeader.click();
+    }
+  }, 500);
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Setup the included features toggle functionality
+  const includedFeaturesHeader = document.querySelector('.included-features-header');
+  const includedFeaturesContent = document.querySelector('.included-features-content');
+
+  if (includedFeaturesHeader && includedFeaturesContent) {
+    includedFeaturesHeader.addEventListener('click', () => {
+      includedFeaturesContent.classList.toggle('collapsed');
+      includedFeaturesHeader.classList.toggle('collapsed');
+      
+      if (includedFeaturesContent.classList.contains('collapsed')) {
+        includedFeaturesContent.style.maxHeight = '0';
+        includedFeaturesContent.style.opacity = '0';
+      } else {
+        includedFeaturesContent.style.maxHeight = includedFeaturesContent.scrollHeight + 'px';
+        includedFeaturesContent.style.opacity = '1';
+        
+        // Update max height after animation completes
+        setTimeout(() => {
+          if (!includedFeaturesContent.classList.contains('collapsed')) {
+            includedFeaturesContent.style.maxHeight = 'none';
+          }
+        }, 300);
+      }
+    });
+  }
+
+  // Make sure the copy link buttons work for the new sections too
+  setupCopyLinks();
+});
+
+// Make pricing toggle labels clickable
+document.addEventListener("DOMContentLoaded", function() {
+  const monthlyLabel = document.getElementById('monthly-label');
+  const annualLabel = document.getElementById('annual-label');
+  const billingToggle = document.getElementById('billing-toggle');
+  
+  if (monthlyLabel && annualLabel && billingToggle) {
+    // Add click event to Monthly label
+    monthlyLabel.addEventListener('click', function() {
+      // Only switch if not already active
+      if (!this.classList.contains('active')) {
+        // Update UI
+        this.classList.add('active');
+        annualLabel.classList.remove('active');
+        
+        // Update toggle state
+        billingToggle.checked = false;
+        
+        // Trigger change event to update calculator
+        const changeEvent = new Event('change');
+        billingToggle.dispatchEvent(changeEvent);
+      }
+    });
+    
+    // Add click event to Annual label
+    annualLabel.addEventListener('click', function() {
+      // Only switch if not already active
+      if (!this.classList.contains('active')) {
+        // Update UI
+        this.classList.add('active');
+        monthlyLabel.classList.remove('active');
+        
+        // Update toggle state
+        billingToggle.checked = true;
+        
+        // Trigger change event to update calculator
+        const changeEvent = new Event('change');
+        billingToggle.dispatchEvent(changeEvent);
+      }
+    });
+    
+    // Add proper cursor style to indicate clickability
+    monthlyLabel.style.cursor = 'pointer';
+    annualLabel.style.cursor = 'pointer';
   }
 });
