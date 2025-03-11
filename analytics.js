@@ -142,42 +142,45 @@ document.addEventListener("DOMContentLoaded", function() {
     const planNameElement = document.getElementById('plan-name');
     const totalPriceElement = document.getElementById('total-price');
     
-    if (planNameElement && totalPriceElement) {
-      // Initialize previous values
-      previousPlan = planNameElement.textContent.trim();
-      previousCost = totalPriceElement.textContent.trim();
+    // disabled because it logged too many interactions
+    // if (planNameElement && totalPriceElement) {
+    //   // Initialize previous values
+    //   previousPlan = planNameElement.textContent.trim();
+    //   previousCost = totalPriceElement.textContent.trim();
       
-      // Create a mutation observer to watch for changes
-      const observer = new MutationObserver(function(mutations) {
-        const currentPlan = planNameElement.textContent.trim();
-        const currentCost = totalPriceElement.textContent.trim();
+    //   // Create a mutation observer to watch for changes
+    //   const observer = new MutationObserver(function(mutations) {
+    //     const currentPlan = planNameElement.textContent.trim();
+    //     const currentCost = totalPriceElement.textContent.trim();
         
-        // Check if plan changed
-        if (previousPlan !== currentPlan) {
-          seline.track("plan: recommendation changed", {
-            from: previousPlan,
-            to: currentPlan,
-            volume: document.getElementById('volume-input')?.value || 'unknown',
-            interactions: calculatorInteractions
-          });
-          previousPlan = currentPlan;
-        }
+    //     // Check if plan changed
+    //     if (previousPlan !== currentPlan) {
+    //       seline.track("plan: recommendation changed", {
+    //         from: previousPlan,
+    //         to: currentPlan,
+    //         volume: document.getElementById('volume-input')?.value || 'unknown',
+    //         interactions: calculatorInteractions
+    //       });
+    //       previousPlan = currentPlan;
+    //     }
         
-        // Check if total cost changed
-        if (previousCost !== currentCost) {
-          seline.track("cost: updated", {
-            cost: currentCost,
-            plan: currentPlan,
-            billingPeriod: document.getElementById('billing-toggle')?.checked ? 'annual' : 'monthly'
-          });
-          previousCost = currentCost;
-        }
-      });
+    //     // Check if total cost changed
+    //     if (previousCost !== currentCost) {
+    //       seline.track("cost: updated", {
+    //         cost: currentCost,
+    //         plan: currentPlan,
+    //         billingPeriod: document.getElementById('billing-toggle')?.checked ? 'annual' : 'monthly'
+    //       });
+    //       previousCost = currentCost;
+    //     }
+    //   });
       
-      // Start observing changes to the plan and price elements
-      observer.observe(planNameElement, { childList: true, characterData: true, subtree: true });
-      observer.observe(totalPriceElement, { childList: true, characterData: true, subtree: true });
-    }
+    //   // Start observing changes to the plan and price elements
+    //   observer.observe(planNameElement, { childList: true, characterData: true, subtree: true });
+    //   observer.observe(totalPriceElement, { childList: true, characterData: true, subtree: true });
+    // }
+    
+    
     
     // Track when user views the results (scrolls to the results section)
     const resultSection = document.querySelector('.results-section');
